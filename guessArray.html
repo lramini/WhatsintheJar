@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Guess the Jar!</title>
+    <link rel="stylesheet" href="guess.css">
+    <style>
+.img{
+  width: 500px;
+  height: 400px;
+
+}
+body{
+  background-color: black;
+  color: white;
+
+}
+    </style>
+    <script>
+    var jars = ["<img class = 'img' src = 'jar1.jpg'>","<img class = 'img'  src = 'jar2.jpg'>","<img class = 'img'  src = 'jar3.jpg'>"];
+    var count1 = 0;
+    var count2 = 0;
+    var answer = [];
+    var correct = ["58","223","33"];
+    var score = 0;
+  function disp()
+  {
+    document.getElementById('pics').innerHTML=jars[0];
+  }
+  function guess()
+  {
+
+       answer[count2] = document.getElementById('num').value;
+        count1++;
+        if (count1 > 2)
+        {
+          count1 = 2;
+        }
+        document.getElementById('pics').innerHTML=jars[count1];
+        count2++;
+        if(count2 = 2)
+        {
+            compareArrays(answer,correct);
+
+        }
+
+  }
+  function compareArrays(x,y) // a general fucntion that can get two arrays and figure if they are the same
+    {
+      for (var i = 0; i < x.length; i++)
+        {
+              if(x[i] == y[i])
+              {
+                score++;
+
+              }
+
+        }
+        document.getElementById('out').innerHTML = score;
+
+
+    }
+
+
+    </script>
+</head>
+  <body onload = "disp()">
+  <h1> Time to guess! </h1>
+  <span id = "pics"> </span>
+  <p>How many are in the jar? <input id = 'num' type = text> </p>
+  <br>
+  <input type = button value = click onclick = "guess()">
+  <br>
+    <span id = "out"> </span>
+  </body>
+</html>
